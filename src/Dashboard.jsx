@@ -41,7 +41,7 @@ function Dashboard() {
       return;
     }
 
-    fetch("http://localhost:2544/user/getfullname", {
+    fetch("http://localhost:8080/myEB/user/getfullname", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ csrid: token }),
@@ -56,7 +56,7 @@ function Dashboard() {
         console.error("Error fetching full name:", err);
       });
 
-    fetch(`http://localhost:2544/user/transactions/${email}`)
+    fetch(`http://localhost:8080/myEB/user/transactions/${email}`)
       .then((res) => res.json())
       .then((data) => {
         setExpenses(data);
@@ -65,7 +65,7 @@ function Dashboard() {
         console.error("Error fetching transactions:", err);
       });
 
-    fetch(`http://localhost:2544/user/transactionsfull/${email}`)
+    fetch(`http://localhost:8080/myEB/user/transactionsfull/${email}`)
       .then((res) => res.json())
       .then((data) => {
         setFullExpenses(data);
