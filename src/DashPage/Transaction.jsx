@@ -61,7 +61,7 @@ const [typeFilter, setTypeFilter] = useState("");
       }
 
       // Fetch full name
-      fetch("http://localhost:2544/user/getfullname", {
+      fetch("http://localhost:8080/myEB/user/getfullname", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ csrid: token }),
@@ -77,7 +77,7 @@ const [typeFilter, setTypeFilter] = useState("");
         });
 
       // Fetch transactions
-      fetch(`http://localhost:2544/user/transactionsfull/${email}`)
+      fetch(`http://localhost:8080/myEB/user/transactionsfull/${email}`)
         .then((res) => res.json())
         .then((data) => {
           setExpenses(data);
@@ -104,7 +104,7 @@ const [confirmDeleteId, setConfirmDeleteId] = useState(null);
       const transactionToDelete = expenses.find((expense) => expense.id === id);
   
       // Attempt to delete the transaction from the server
-      const res = await fetch(`http://localhost:2544/user/deleteTransaction/${id}`, {
+      const res = await fetch(`http://localhost:8080/myEB/user/deleteTransaction/${id}`, {
         method: "DELETE",
       });
       const text = await res.text();
@@ -483,7 +483,7 @@ const [confirmDeleteId, setConfirmDeleteId] = useState(null);
           };
 
           try {
-            const response = await fetch("http://localhost:2544/user/updateTransaction", {
+            const response = await fetch("http://localhost:8080/myEB/user/updateTransaction", {
               method: "PUT",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(updatedData),
