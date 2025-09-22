@@ -1,0 +1,266 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #e1f5fe;  /* Light Blue background */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+header {
+  background: linear-gradient(90deg, #007bff, #6610f2);
+  color: #fff;
+  padding: 10px 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;  /* Space between h1 and nav-links */
+  align-items: center;
+  padding: 0 20px;
+ 
+}
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  padding: 0;  
+}
+
+.nav-links li {
+  margin-left:  0 1rem;
+}
+
+.nav-links a {
+  color: #fff;
+  
+  font-weight: bold;
+  padding: 8px 16px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  background-color: #8c28f2;  /* Darker Blue hover effect */
+  border-radius: 4px;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #6e7dff, #9e8eff); /* Light blue to purple gradient */
+  color: #fff;  /* Text color */
+  padding: 80px 0;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.hero .buttons .btn {
+ background: linear-gradient(90deg, #007bff, #6610f2);
+  color: #fff;
+  padding: 10px 30px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+.hero .buttons .btn:hover {
+  background-color: #0277bd;  /* Darker Blue */
+}
+
+
+
+@media (max-width: 768px) {
+  .hero h2 {
+      font-size: 1.8rem;
+  }
+  .hero p {
+      font-size: 1rem;
+  }
+}
+
+
+
+/* Features Section */
+/* Features Section */
+.features {
+  background: linear-gradient(135deg, #f0f0f0, #e0e0e0); /* Light gray gradient */
+  color: #333;  /* Dark text color for better readability */
+  padding: 60px 0;
+}
+
+.features h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.feature-list {
+  display: flex;
+  justify-content: space-between;  /* Space between items */
+  text-align: center;
+}
+
+.feature-item {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: 0.3s;
+  margin: 0 10px;
+}
+
+.feature-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);  /* Slight zoom effect */
+  background-color: #e7f3fe;  /* Light blue hover background */
+}
+
+.feature-item i {
+  font-size: 3rem;
+  background: linear-gradient(90deg, #007bff, #6610f2); /* Gradient color */
+  -webkit-background-clip: text; /* Clips the gradient to the text */
+  -webkit-text-fill-color: transparent; /* Makes the text color transparent to show the gradient */
+  margin-bottom: 10px;
+}
+
+
+.feature-item h3 {  
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.feature-item p {
+  font-size: 1.1rem;
+}
+.feature-popup {
+  transition: opacity 0.3s ease;
+}
+
+.feature-item i {
+  transition: transform 0.3s ease-in-out;
+}
+.feature-item:hover i {
+  transform: scale(1.1);
+}
+
+/* Footer Section */
+footer {
+  background: linear-gradient(90deg, #007bff, #6610f2);
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+footer i{
+  margin-left: 7px;
+}
+footer p {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .login-container {
+      width: 100%;
+      padding: 20px;
+  }
+  .navbar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  .nav-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+}
+
+@keyframes classicRotateGlow {
+  0% {
+      transform: rotate(0deg) translateY(0);
+      text-shadow: 0 0 5px rgba(79, 195, 247, 0.4); /* Subtle blue glow */
+      color: #4fc3f7; /* Light blue tone */
+  }
+  50% {
+      transform: rotate(-5deg) translateY(-8px);
+      text-shadow: 0 0 10px rgba(79, 195, 247, 0.6); /* Enhanced glow at peak */
+  }
+  100% {
+      transform: rotate(0deg) translateY(0);
+      text-shadow: 0 0 5px rgba(79, 195, 247, 0.4);
+  }
+}
+
+/* Rotational floating with soft blue glow */
+@keyframes classicRotateGlow {
+  0% {
+      transform: rotate(0deg) translateY(0);
+      text-shadow: 0 0 5px rgba(79, 195, 247, 0.4); /* Subtle blue glow */
+      color: #4fc3f7; /* Light blue tone */
+  }
+  50% {
+      transform: rotate(-5deg) translateY(-8px);
+      text-shadow: 0 0 10px rgba(79, 195, 247, 0.6); /* Enhanced glow at peak */
+  }
+  100% {
+      transform: rotate(0deg) translateY(0);
+      text-shadow: 0 0 5px rgba(79, 195, 247, 0.4);
+  }
+}
+
+/* Apply animation to icons */
+.feature-item i {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  animation: classicRotateGlow 4s ease-in-out infinite; /* Elegant rotational float */
+  transition: transform 0.3s, text-shadow 0.3s, color 0.3s; /* Smooth transitions */
+  color: #4fc3f7; /* Light blue for a refreshing feel */
+}
+
+/* Hover effect for classic interaction */
+.feature-item i:hover {
+  transform: scale(1.1); /* Slightly larger on hover */
+  text-shadow: 0 0 15px rgba(79, 195, 247, 0.8); /* Enhance glow on hover */
+  color: #03a9f4; /* Brighter blue tone for hover */
+}
+
+/* General styles for feature-item */
+.feature-item h3 {
+  margin-top: 15px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333; /* Classic neutral tone */
+}
+
+.feature-item p {
+  font-size: 1rem;
+  color: #555; /* Softer neutral tone for text */
+}
