@@ -41,7 +41,7 @@ function Register() {
         password: formData.password,
       };
 
-      const response = await callApi("POST", "http://localhost:2544/user/signup", requestBody);
+      const response = await callApi("POST", "http://localhost:8080/myEB/user/signup", requestBody);
 
       if (response.status === "success") {
         setSuccessMessage("Account created successfully! Redirecting to login...");
