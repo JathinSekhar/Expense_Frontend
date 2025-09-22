@@ -34,7 +34,7 @@ function ResetPassword() {
     }
 
     try {
-      const response = await axios.post("http://localhost:2544/user/reset-password", null, {
+      const response = await axios.post("http://localhost:8080/myEB/user/reset-password", null, {
         params: { token, newPassword },
       });
 
