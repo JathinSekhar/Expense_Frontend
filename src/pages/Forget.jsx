@@ -11,7 +11,7 @@ function Forget() {
     event.preventDefault();
     
     try {
-      const response = await axios.post("http://localhost:2544/user/forgot-password", { email });
+      const response = await axios.post("http://localhost:8080/myEB/user/forgot-password", { email });
       setMessage(response.data);
     } catch (error) {
       setMessage("Error: Unable to process request.");
