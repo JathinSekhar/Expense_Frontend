@@ -40,7 +40,7 @@ const ExpensePage = () => {
         const userEmail = decoded.sub;
         setEmail(userEmail);
 
-        fetch("http://localhost:2544/user/getfullname", {
+        fetch("http://localhost:8080/myEB/user/getfullname", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ csrid: token }),
@@ -55,7 +55,7 @@ const ExpensePage = () => {
             // optional: handle error
           });
 
-        fetch(`http://localhost:2544/user/transactions/${userEmail}`)
+        fetch(`http://localhost:8080/myEB/user/transactions/${userEmail}`)
           .then((res) => res.json())
           .catch(() => {
             // optional: handle error
@@ -92,7 +92,7 @@ const ExpensePage = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:2544/user/addTransaction", {
+      const res = await fetch("http://localhost:8080/myEB/user/addTransaction", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
