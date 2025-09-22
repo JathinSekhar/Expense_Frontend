@@ -43,7 +43,7 @@ function SetBudget() {
     if (!token) {
       navigate("/login");
     } else {
-      fetch("http://localhost:2544/user/getfullname", {
+      fetch("http://localhost:8080/myEB/user/getfullname", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ csrid: token }),
@@ -56,7 +56,7 @@ function SetBudget() {
         })
         .catch((err) => console.error("Error fetching full name:", err));
 
-      fetch(`http://localhost:2544/user/transactions/${email}`)
+      fetch(`http://localhost:8080/myEB/user/transactions/${email}`)
         .then((res) => res.json())
         .then((data) => setExpenses(data))
         .catch((err) => console.error("Error fetching transactions:", err));
