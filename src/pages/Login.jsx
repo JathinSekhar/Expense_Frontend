@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import jwtDecode from "jwt-decode";
-import "./Login.css";
+import "./Login.css";   // ✅ matches the actual file
 
-const BASE_URL = "http://localhost:8080/myEB";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -12,7 +10,7 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Auto-redirect if already logged in & token is valid
+  // 🔹 Auto-redirect if already logged in & token is valid
   useEffect(() => {
     const token = localStorage.getItem("token");
     const expiresAt = localStorage.getItem("expiresAt");
@@ -26,7 +24,7 @@ function Login() {
         localStorage.removeItem("expiresAt");
       }
     }
-  }, [navigate]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,34 +32,25 @@ function Login() {
     setLoading(true);
 
     try {
-      const response = await fetch(`${BASE_URL}/user/signin`, {
+      const response = await fetch("http://localhost:8080/myEB/user/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
 
-      const resultText = await response.text();
-      const [status, token] = resultText.split("::"); // If backend returns 200::<token>
+      const result = await response.text();
+      const [status, token] = result.split("::");
 
       if (status === "200") {
-        // Decode JWT to verify
-        try {
-          const decoded = jwtDecode(token);
-          console.log("Logged in user:", decoded);
-        } catch {
-          console.warn("Invalid JWT received.");
-        }
-
-        const expiresAt = new Date().getTime() + 5 * 60 * 60 * 1000; // 5 hours
+        const expiresAt = new Date().getTime() + 5 * 60 * 60 * 1000; // 5-hour expiration
         localStorage.setItem("token", token);
         localStorage.setItem("expiresAt", expiresAt);
         navigate("/dashboard");
       } else {
         setError("Invalid Credentials");
       }
-    } catch (err) {
-      console.error(err);
-      setError("Something went wrong. Please try again.");
+    } catch (error) {
+      setError("Something went wrong, please try again.");
     } finally {
       setLoading(false);
     }
@@ -88,31 +77,29 @@ function Login() {
           {error && <p className="error-message">{error}</p>}
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label>Email</label>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                autoFocus
+              <label><i className="fas fa-envelope"></i>Email</label>
+              <input 
+                type="email" 
+                placeholder="Enter your email" 
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)} 
+                required 
               />
             </div>
             <div className="form-group">
-              <label>Password</label>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
+              <label><i className="fas fa-lock"></i>Password</label>
+              <input 
+                type="password" 
+                placeholder="Enter your password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                required 
               />
             </div>
             <button type="submit" className="login-button" disabled={loading}>
               {loading ? "Logging in..." : "Login"}
             </button>
           </form>
-
           <div className="form-footer">
             <p>Don't have an account? <Link to="/register">Register here</Link></p>
             <p><Link to="/forget">Forgot your password?</Link></p>
